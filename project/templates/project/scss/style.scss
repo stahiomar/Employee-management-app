@@ -1,0 +1,147 @@
+@import 'bootstrap/bootstrap';
+@import 'bootstrap/variables';
+@import 'bootstrap/mixins';
+
+$font-primary: 'Poppins',Arial, sans-serif;
+$primary: #6807f9;
+
+body{
+	font-family: $font-primary;
+	font-size: 16px;
+	line-height: 1.8;
+	font-weight: normal;
+	background: #f8f9fd;
+	color: lighten($black,50%);
+}
+a {
+	transition: .3s all ease;
+	color: $primary;
+	&:hover, &:focus {
+		text-decoration: none !important;
+		outline: none !important;
+		box-shadow: none;
+	}
+}
+h1, h2, h3, h4, h5,
+.h1, .h2, .h3, .h4, .h5 {
+	line-height: 1.5;
+	font-weight: 400;
+	font-family: $font-primary;
+	color: $black;
+}
+
+.bg-primary{
+	background: $primary !important;
+}
+
+.ftco-section{
+	padding: 7em 0;
+}
+
+.ftco-no-pt{
+	padding-top: 0;
+}
+.ftco-no-pb{
+	padding-bottom: 0;
+}
+//HEADING SECTION
+.heading-section{
+	font-size: 28px;
+	color: $black;
+}
+
+//COVER BG
+.img{
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+.table-wrap{
+	@include media-breakpoint-down(xl){
+		overflow-x: scroll;
+	}
+}
+.table{
+	min-width: 1000px !important;
+	width: 100%;
+	background: $white;
+	-webkit-box-shadow: 0px 5px 12px -12px rgba(0,0,0,0.29);
+	-moz-box-shadow: 0px 5px 12px -12px rgba(0,0,0,0.29);
+	box-shadow: 0px 5px 12px -12px rgba(0,0,0,0.29);
+	text-align: center;
+	thead{
+		&.thead-primary{
+			background: $primary;
+		}
+		th{
+			border: none;
+			padding: 30px;
+			font-size: 14px;
+			color: $white;
+		}
+	}
+	tbody{
+		tr{
+			margin-bottom: 10px;
+		}
+		th,td{
+			border: none;
+			padding:30px;
+			font-size: 14px;
+			background: $white;
+			vertical-align: middle;
+			border-bottom: 2px solid #f8f9fd;
+		}
+		th.scope{
+			background: darken(#f8f9fd,4%);
+			border-bottom: 2px solid darken(#f8f9fd,6%);
+		}
+		td{
+			@include media-breakpoint-up(md){
+				&:nth-child(odd){
+					background: darken(#f8f9fd,1%);
+					border-bottom: 2px solid darken(#f8f9fd,3%);
+				}
+			}
+		}
+	}
+}
+
+
+//BUTTONS
+.btn {
+	cursor: pointer;
+	border-width: 2px;
+	border-radius: 2px;
+	box-shadow: none !important;
+	font-size: 13px;
+	font-weight: 500;
+	-webkit-box-shadow: 0px 10px 20px -6px rgba(0,0,0,0.12);
+	-moz-box-shadow: 0px 10px 20px -6px rgba(0,0,0,0.12);
+	box-shadow: 0px 10px 20px -6px rgba(0,0,0,0.12);
+	&:hover, &:active, &:focus {
+		outline: none !important;
+		-webkit-box-shadow: 0px 12px 20px -6px rgba(0,0,0,0.21);
+		-moz-box-shadow: 0px 12px 20px -6px rgba(0,0,0,0.21);
+		box-shadow: 0px 12px 20px -6px rgba(0,0,0,0.21);
+	}
+	&.btn-primary {
+		background: $primary;
+		border-color: $primary;
+		color: $white;
+		&:hover,&:focus{
+			border-color: darken($primary,10%) !important;
+			background: darken($primary,10%) !important;
+		}
+		&.btn-link{
+			background: transparent;
+			color: $white;
+			border:none;
+			box-shadow: none;
+		}
+	}
+	&.btn-outline-primary{
+		color: $white;
+	}
+}

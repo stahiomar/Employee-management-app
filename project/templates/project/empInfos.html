@@ -1,0 +1,232 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Employee page</title>
+  <link rel="stylesheet" href="{% static 'profile/css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <style>
+    .text-bg-dark {
+      height: 952px !important;
+      background: linear-gradient(180deg, #085eea,#b721ff)!important;
+    }
+    .nav .active{
+      background-color: #feff00cc !important;
+    }
+  </style>
+</head>
+
+<body>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+            <ul class="dropdown-menu dropdown-menu-dark text-small shadow" style="">
+              <li><a class="dropdown-item" href="login.html">Sign out</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="d-flex flex-nowrap">
+    <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px; height: 890px;">
+      <div class="p-4">
+        <div class="img-circle text-center mb-3">
+          {% if employee.picture %}
+          <img src="{{ employee.picture.url }}" alt="Profile Image" class="shadow">
+          {% else %}
+          <img src="{% static 'images/user_profile.png' %}" alt="Default Profile Image" class="shadow">
+          {% endif %}
+        </div>
+        <h4 class="text-center">{{employee.firstname}} {{employee.lastname}}</h4>
+      </div>
+      <hr>
+      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <a class="nav-link active text-white" id="account-tab" data-toggle="pill" href="#account" role="tab" aria-controls="account" aria-selected="true">
+          <i class="fa fa-home text-center mr-1"></i> 
+          Account
+        </a>
+        <a class="nav-link text-white" id="password-tab" data-toggle="pill" href="#password" role="tab" aria-controls="password" aria-selected="false">
+          <i class="fa fa-key text-center mr-1"></i> 
+          Edit informations
+        </a>
+        <a class="nav-link text-white" id="absences-tab" data-toggle="pill" href="#absences" role="tab" aria-controls="absences" aria-selected="false">
+          <i class="fa fa-calendar-alt text-center mr-1"></i> 
+          Absences
+        </a>
+        <a href="{%url 'empLogout'%}" class="nav-link text-white">
+          <i class="fa-solid fa-file-arrow-down" style="color: #ffffff;"></i>
+          Logout
+        </a>
+      </div>
+      <hr>
+    </div>
+
+    <div class="b-example-divider b-example-vr"></div>
+
+    <div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
+      <div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
+        <h3 class="mb-4">Account Settings</h3>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+                <label>First Name</label>
+                <span class="form-control">{{employee.firstname}}</span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+                <label>Last Name</label>
+                <span class="form-control">{{employee.lastname}}</span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+                <label>Email</label>
+                <span class="form-control">{{employee.email}}</span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+                <label>Adresse</label>
+                <span class="form-control">{{employee.adresse}}</span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+                <label>Gender</label>
+                <span class="form-control">{{employee.gender}}</span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+                <label>Age</label>
+                <span class="form-control">{{employee.age}}</span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+                <label>Profession</label>
+                <span class="form-control">{{employee.profession}}</span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+                <label>Salary</label>
+                <span class="form-control">{{employee.salary}}</span>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+                <label>Description</label>
+              <textarea class="form-control" rows="10" cols="60" name="description" readonly>{{employee.description}}</textarea>
+            </div>
+          </div>
+        </div>
+        <div>
+          <button class="btn btn-primary" onclick="saveAsPDF()">Download as pdf</button>
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
+        <form method="POST" class="styled-form" enctype="multipart/form-data">
+          {% csrf_token %}
+          <h3 class="mb-4">Edit personal info</h3>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>First name</label>
+                <input value="{{employee.firstname}}" type="text" name="firstname" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Last name</label>
+                <input value="{{employee.lastname}}" type="text" name="lastname" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Email</label>
+                <input value="{{employee.email}}" type="text" name="email" class="form-control">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Address</label>
+                <input value="{{employee.address}}" type="text" name="address" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Description</label>
+                <textarea class="form-control" rows="8" cols="500" name="description">{{employee.description}}</textarea>
+              </div>
+            </div>
+          </div>
+          <div>
+            <label>Change your profile picture</label>
+            <input type="file" name="profile_image" class="form-control-file">
+          </div>
+          <br>
+          <button type="submit" class="btn btn-primary">Update</button>
+          <button class="btn btn-light">Cancel</button>
+        </form>
+      </div>
+
+      <div class="tab-pane fade" id="absences" role="tabpanel" aria-labelledby="absences-tab">
+        <h3 class="mb-4">Absence History</h3>
+        <div>
+          {% if absences %}
+    <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>State</th>
+                  <th>Duration</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for absence in absences %}
+                  <tr>
+                    <td>{{ absence.state }}</td>
+                    <td>{{ absence.date }}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          {% else %}
+            <p>No absence recorded.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script>
+    function saveAsPDF() {
+      // Hide elements not needed in the PDF
+      var elementsToHide = document.querySelectorAll('.no-print');
+      for (var i = 0; i < elementsToHide.length; i++) {
+        elementsToHide[i].style.display = 'none';
+      }
+      // Trigger the print dialog
+      window.print();
+
+      // Restore the hidden elements after printing
+      for (var i = 0; i < elementsToHide.length; i++) {
+        elementsToHide[i].style.display = '';
+      }
+    }
+  </script>
+</body>
+</html>

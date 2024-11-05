@@ -1,0 +1,85 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>all emps</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" href={% static 'style.css' %}>
+	<style>
+		.btn-container {
+            display: flex;
+            justify-content: center;
+        }
+		.btn {
+            background: linear-gradient(90deg, #085eea, #b721ff);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+			
+        }
+    </style>
+	</head>
+	<body>
+		
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<h4 class="text-center mb-4">employees infos</h4>
+					<div class="table-wrap">
+						<table class="table">
+					    <thead class="thead-primary">
+					      <tr>
+                            <th>id</th>
+					                  <th>firstname</th>
+                            <th>lastname</th>
+                            <th>email</th>
+                            <th>profession</th>
+                            <th>gender</th>
+                            <th>age</th>
+                            <th>adresse</th>
+                            <th>salary</th>
+							<tbody>
+					      </tr>
+					    </thead>
+                            {% for employee in employees %}
+                            <tr>
+                              <th scope="row" class="scope">{{ employee.id }}</th>
+                              <td>{{ employee.firstname }}</td>
+                              <td>{{ employee.lastname }}</td>
+                              <td>{{ employee.profession }}</td>
+                              <td>{{ employee.email }}</td>
+                              <td>{{ employee.gender }}</td>
+                              <td>{{ employee.age }}</td>
+                              <td>{{ employee.adresse }}</td>
+                              <td>{{ employee.salary }}</td>
+                            </tr>
+                            {% endfor %}
+                          </tbody>
+					  </table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+    <div class="btn-container">
+		<form method="post" action="{% url 'evaluateEmployees' %}">
+			<p>{{msg}}</p>
+			{% csrf_token %}
+			<input class="btn" type="submit" value="Automatic evaluation">
+		</form>
+	</div>
+	
+	</body>
+</html>
+

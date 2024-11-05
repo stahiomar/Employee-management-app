@@ -1,0 +1,26 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="{% static 'signup.css' %}" rel="stylesheet">
+    <title>Edit Employee Information</title>
+  </head>
+  <body>
+    <div class="container">
+    <h2>Edit Employee Information</h2>
+    <form method="POST" class="styled-form">
+      {% csrf_token %}
+      <label for="firstname">First Name:</label>
+      <input type="text" name="firstname" value="{{ employee.firstname }}" required><br>
+
+      <label for="lastname">Last Name:</label>
+      <input type="text" name="lastname" value="{{ employee.lastname }}" required><br>
+
+      <label for="email">Email:</label>
+      <input type="email" name="email" value="{{ employee.email }}" required><br>
+
+      <input type="submit" value="Save" class="styled-button">
+    </form>
+  </div>
+  </body>
+</html>

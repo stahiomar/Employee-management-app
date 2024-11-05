@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact Us</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+  
+      .contact-section {
+        margin-top: 50px;
+        padding: 20px;
+      }
+  
+      .contact-heading {
+        font-size: 52px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+  
+      .contact-info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+  
+      .contact-item {
+        margin: 50px;
+        font-size: 32px;
+      }
+  
+      .fa-sharp {
+        font-size: 36px;
+        margin-right: 5px;
+      }
+      
+      .navbar-dark {
+        background: linear-gradient(90deg, #085eea, #b721ff) !important;
+      }  </style>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- NAVBAR : START -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Employees Management <i class="fa-solid fa-database"></i></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a href="{%url 'login'%}" class="nav-link">login <i class="fa-solid fa-right-to-bracket"></i></a>
+                </li>
+                <li class="nav-item active">
+                    <a href="{%url 'about'%}" class="nav-link">about us <i class="fa-solid fa-circle-info"></i></a>
+                </li>
+                <li class="nav-item active">
+                    <a href="{%url 'contact'%}" class="nav-link">contact us <i class="fa-solid fa-message"></i></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</head>
+<body>
+</br></br></br></br></br>
+  <div class="contact-section">
+    <h2 class="contact-heading">Contact Us</h2>
+</br></br></br>
+    <div class="contact-info">
+      <div class="contact-item">
+        <i class="fa-sharp fa-solid fa-location-dot"></i></br> 123 Street, City, Country
+      </div>
+      <div class="contact-item">
+        <i class="fa-sharp fa-solid fa-phone-volume"></i></br> 0606123265
+      </div>
+      <div class="contact-item">
+        <i class="fa-sharp fa-solid fa-envelope"></i></br> business@info.com
+      </div>
+    </div>
+  </div>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
